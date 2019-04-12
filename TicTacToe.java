@@ -17,10 +17,10 @@ import javafx.stage.Stage;
 import java.util.Random;
 public class TicTacToe extends Application 
 {
-		int count = 0, counter = 1, turn = 1;
-		int[][] array = new int[3][3];
-		Random rDraw = new Random();
-		Button[][] btn = new Button[3][3];
+	int count = 0, counter = 1, turn = 1;
+	int[][] array = new int[3][3];
+	Random rDraw = new Random();
+	Button[][] btn = new Button[3][3];
         public void start(Stage primaryStage)
         {
         	for(int r = 0; r < 3; r++)
@@ -41,90 +41,88 @@ public class TicTacToe extends Application
     				btn[r2][c2].setPrefHeight(100);
     				btn[r2][c2].setPrefWidth(100);
     				btn[r2][c2].setFont(Font.font("Verdana", 40));
-    				
     				btn[r2][c2].setOnAction(new EventHandler<ActionEvent>()
     				{
-    	            	public void handle(ActionEvent e) 
-    	            	{
-    	            		if(count % 2 == 0 && ((Button)e.getSource()).getText().equals("-"))
-    	            		{
-    	            			((Button)e.getSource()).setText("X");
-    	            			((Button)e.getSource()).setFont(Font.font("Verdana", 40));
-    	            			array[num][num2] = 1;
-    	            			count++;
-    	            				turn++;			
-    	            		}
-    	            		else if(count % 2 == 1 && ((Button)e.getSource()).getText().equals("-"))
-    	            		{
-    	            			((Button)e.getSource()).setText("O");
-    	            			((Button)e.getSource()).setFont(Font.font("Verdana", 40));
-    	            			array[num][num2] = 2;
-    	            			count++;
-    	            			turn++;
-    	            		}
-    	            		if(winnerCheck() == true && ((Button)e.getSource()).getText().equals("X")) 
-    	            		{
-    	                		Alert a1 = new Alert(Alert.AlertType.INFORMATION);
-    	                		a1.setTitle("GAME OVER");
-    	                		a1.setContentText("PLAYER 1 WINS!");
-    	                		a1.setHeaderText(null);;
-    	                		a1.showAndWait();
-    	                    }
-    	            		else if(winnerCheck() == true && ((Button)e.getSource()).getText().equals("O")) 
-    	            		{
-    	                		Alert a1 = new Alert(Alert.AlertType.INFORMATION);
-    	                		a1.setTitle("GAME OVER");
-    	                		a1.setContentText("PLAYER 2 WINS!");
-    	                		a1.setHeaderText(null);;
-    	                		a1.showAndWait();
-    	                    }
-    	            		else 
-    	            		{
-    	            			if(!btn[0][0].getText().equals("-") && !btn[0][1].getText().equals("-") &&
-    	            					!btn[0][2].getText().equals("-") && !btn[1][0].getText().equals("-") &&
-    	                        		!btn[1][1].getText().equals("-") && !btn[1][2].getText().equals("-") &&
-    	                        		!btn[2][0].getText().equals("-") && !btn[2][1].getText().equals("-") &&
-    	                        		!btn[2][2].getText().equals("-")) 
+    	            			public void handle(ActionEvent e) 
     	            			{
-    	                    		Alert a1 = new Alert(Alert.AlertType.INFORMATION);
-    	                        	a1.setTitle("GAME OVER");
-    	                        	a1.setContentText("DRAW!");
-    	                        	a1.setHeaderText(null);;
-    	                        	a1.showAndWait();
-    	                    	}
-    	            		}
-    	            	}
-    	            });
+    	            				if(count % 2 == 0 && ((Button)e.getSource()).getText().equals("-"))
+    	            				{
+    	            					((Button)e.getSource()).setText("X");
+    	            					((Button)e.getSource()).setFont(Font.font("Verdana", 40));
+    	            					array[num][num2] = 1;
+    	            					count++;
+    	            					turn++;			
+    	            				}
+    	            				else if(count % 2 == 1 && ((Button)e.getSource()).getText().equals("-"))
+    	            				{
+    	            					((Button)e.getSource()).setText("O");
+    	            					((Button)e.getSource()).setFont(Font.font("Verdana", 40));
+    	            					array[num][num2] = 2;
+    	            					count++;
+    	            					turn++;
+    	            				}
+    	            				if(winnerCheck() == true && ((Button)e.getSource()).getText().equals("X")) 
+    	            				{
+    	                				Alert a1 = new Alert(Alert.AlertType.INFORMATION);
+    	                				a1.setTitle("GAME OVER");
+    	                				a1.setContentText("PLAYER 1 WINS!");
+    	                				a1.setHeaderText(null);;
+    	                				a1.showAndWait();
+    	                    			}
+    	            				else if(winnerCheck() == true && ((Button)e.getSource()).getText().equals("O")) 
+    	            				{
+    	                				Alert a1 = new Alert(Alert.AlertType.INFORMATION);
+    	                				a1.setTitle("GAME OVER");
+    	                				a1.setContentText("PLAYER 2 WINS!");
+    	                				a1.setHeaderText(null);;
+    	                				a1.showAndWait();
+    	                    			}
+    	            				else 
+    	            				{
+    	            					if(!btn[0][0].getText().equals("-") && !btn[0][1].getText().equals("-") &&
+    	            					!btn[0][2].getText().equals("-") && !btn[1][0].getText().equals("-") &&
+    	                        			!btn[1][1].getText().equals("-") && !btn[1][2].getText().equals("-") &&
+    	                        			!btn[2][0].getText().equals("-") && !btn[2][1].getText().equals("-") &&
+    	                        			!btn[2][2].getText().equals("-")) 
+    	            					{
+    	                    					Alert a1 = new Alert(Alert.AlertType.INFORMATION);
+    	                        				a1.setTitle("GAME OVER");
+    	                        				a1.setContentText("DRAW!");
+    	                        				a1.setHeaderText(null);;
+    	                        				a1.showAndWait();
+    	                    				}
+    	            				}
+    	            			}
+    	            		});
     			}
     		}
-            BorderPane root = new BorderPane();
-            root.setRight(getVBox());
-            GridPane grid = new GridPane();
-            grid.setPadding(new Insets(10, 10, 10, 10));
-            grid.setPrefHeight(300);
-            grid.setPrefWidth(300);
-            grid.setAlignment(Pos.BASELINE_LEFT);
-            grid.add(btn[0][0], 0, 0);
-            grid.add(btn[0][1], 0, 1);
-            grid.add(btn[0][2], 0, 2);
-            grid.add(btn[1][0], 1, 0);
-            grid.add(btn[1][1], 1, 1);
-            grid.add(btn[1][2], 1, 2);
-            grid.add(btn[2][0], 2, 0);
-            grid.add(btn[2][1], 2, 1);
-            grid.add(btn[2][2], 2, 2);
-            root.setLeft(grid);
-        	
-            Scene myScene = new Scene(root, 500, 500);
-            primaryStage.setTitle("TIC TAC TOE");
-            primaryStage.setScene(myScene);
-            primaryStage.show();
-            Alert a1 = new Alert(Alert.AlertType.INFORMATION);
-			a1.setTitle("GAME START");
-			a1.setContentText("Player 1 is X. Player 2 is O. If you wish to play against the computer hit "
+            	BorderPane root = new BorderPane();
+            	root.setRight(getVBox());
+            	GridPane grid = new GridPane();
+            	grid.setPadding(new Insets(10, 10, 10, 10));
+            	grid.setPrefHeight(300);
+            	grid.setPrefWidth(300);
+            	grid.setAlignment(Pos.BASELINE_LEFT);
+            	grid.add(btn[0][0], 0, 0);
+            	grid.add(btn[0][1], 0, 1);
+            	grid.add(btn[0][2], 0, 2);
+            	grid.add(btn[1][0], 1, 0);
+            	grid.add(btn[1][1], 1, 1);
+            	grid.add(btn[1][2], 1, 2);
+            	grid.add(btn[2][0], 2, 0);
+            	grid.add(btn[2][1], 2, 1);
+            	grid.add(btn[2][2], 2, 2);
+            	root.setLeft(grid);
+            	Scene myScene = new Scene(root, 500, 500);
+            	primaryStage.setTitle("TIC TAC TOE");
+            	primaryStage.setScene(myScene);
+            	primaryStage.show();
+            	Alert a1 = new Alert(Alert.AlertType.INFORMATION);
+	    	a1.setTitle("GAME START");
+	    	a1.setContentText("Player 1 is X. Player 2 is O. If you wish to play against the computer hit "
 					+ "CPU after your turn. Press OK to Begin.");
-			a1.setHeaderText(null);;
-			a1.showAndWait();	
+	    	a1.setHeaderText(null);;
+	    	a1.showAndWait();	
         }
         //function to set the side bar buttons to restart the game or play against the cpu
         public VBox getVBox()
@@ -134,42 +132,42 @@ public class TicTacToe extends Application
         	Button smartCPU = new Button("Competitive CPU");
         	VBox vBox = new VBox(15);
         	vBox.setPrefWidth(200);
-            vBox.setPadding(new Insets(15, 15, 15, 15));
-            vBox.setStyle("-fx-background-color: GREY");
-            vBox.getChildren().add(restart);
-            vBox.getChildren().add(cpu);
-            vBox.getChildren().add(smartCPU);
-            restart.setOnAction(new EventHandler<ActionEvent>()
-            {
-            	public void handle(ActionEvent e) 
+            	vBox.setPadding(new Insets(15, 15, 15, 15));
+            	vBox.setStyle("-fx-background-color: GREY");
+            	vBox.getChildren().add(restart);
+            	vBox.getChildren().add(cpu);
+            	vBox.getChildren().add(smartCPU);
+            	restart.setOnAction(new EventHandler<ActionEvent>()
             	{
-            		if(((Button)e.getSource()).getText().equals("Restart")) 
+            		public void handle(ActionEvent e) 
             		{
-            			reset();
+            			if(((Button)e.getSource()).getText().equals("Restart")) 
+            			{
+            				reset();
+            			}
             		}
-            	}
-            });
-            cpu.setOnAction(new EventHandler<ActionEvent>() 
-            {
-            	public void handle(ActionEvent e) 
+            	});
+            	cpu.setOnAction(new EventHandler<ActionEvent>() 
             	{
-            		if(((Button)e.getSource()).getText().equals("CPU")) 
+            		public void handle(ActionEvent e) 
             		{
-            					cpu();
+            			if(((Button)e.getSource()).getText().equals("CPU")) 
+            			{
+            				cpu();
+            			}
             		}
-            	}
-            });
-            smartCPU.setOnAction(new EventHandler<ActionEvent>() 
-            {
-            	public void handle(ActionEvent e) 
+            	});
+            	smartCPU.setOnAction(new EventHandler<ActionEvent>() 
             	{
-            		if(((Button)e.getSource()).getText().equals("Competitive CPU")) 
+            		public void handle(ActionEvent e) 
             		{
-            			smartCPU();
+            			if(((Button)e.getSource()).getText().equals("Competitive CPU")) 
+            			{
+            				smartCPU();
+            			}
             		}
-            	}
-            });
-            return vBox;
+            	});
+            	return vBox;
         }
         //function to check grid input combinations for the winning conditions
         public boolean winnerCheck()
@@ -215,150 +213,150 @@ public class TicTacToe extends Application
        		while(turn == 2 || turn == 4 || turn == 6 || turn == 8) 
        		{
        			int rand = 1 + rDraw.nextInt(9);
-            	if(rand == 1 && btn[0][0].getText().equals("-")) 
-            	{
-            		btn[0][0].setText("O");
-            		btn[0][0].setFont(Font.font("Verdana", 40));
-            		array[0][0] = 2;
-            		count++;
-            		turn++;
-            		if(winnerCheck() == true && btn[0][0].getText().equals("O")) 
+            		if(rand == 1 && btn[0][0].getText().equals("-")) 
             		{
-            			Alert a1 = new Alert(Alert.AlertType.INFORMATION);
-            			a1.setTitle("GAME OVER");
-            			a1.setContentText("CPU WINS!");
-            			a1.setHeaderText(null);;
-            			a1.showAndWait();
-                	}
-            	}
-            	if(rand == 2 && btn[0][1].getText().equals("-")) 
-            	{
-            		btn[0][1].setText("O");
-            		btn[0][1].setFont(Font.font("Verdana", 40));
-            		array[0][1] = 2;
-            		count++;
-            		turn++;
-            		if(winnerCheck() == true && btn[0][1].getText().equals("O")) 
+            			btn[0][0].setText("O");
+            			btn[0][0].setFont(Font.font("Verdana", 40));
+            			array[0][0] = 2;
+            			count++;
+            			turn++;
+            			if(winnerCheck() == true && btn[0][0].getText().equals("O")) 
+            			{
+            				Alert a1 = new Alert(Alert.AlertType.INFORMATION);
+            				a1.setTitle("GAME OVER");
+            				a1.setContentText("CPU WINS!");
+            				a1.setHeaderText(null);;
+            				a1.showAndWait();
+                		}
+            		}
+            		if(rand == 2 && btn[0][1].getText().equals("-")) 
             		{
-            			Alert a1 = new Alert(Alert.AlertType.INFORMATION);
-            			a1.setTitle("GAME OVER");
-            			a1.setContentText("CPU WINS!");
-            			a1.setHeaderText(null);;
-            			a1.showAndWait();
-                	}
-            	}
-            	if(rand == 3 && (btn[0][2].getText().equals("-"))) 
-            	{
-            		btn[0][2].setText("O");
-            		btn[0][2].setFont(Font.font("Verdana", 40));
-            		array[0][2] = 2;
-            		count++;
-            		turn++;
-            		if(winnerCheck() == true && btn[0][2].getText().equals("O")) 
+            			btn[0][1].setText("O");
+            			btn[0][1].setFont(Font.font("Verdana", 40));
+            			array[0][1] = 2;
+            			count++;
+            			turn++;
+            			if(winnerCheck() == true && btn[0][1].getText().equals("O")) 
+            			{
+            				Alert a1 = new Alert(Alert.AlertType.INFORMATION);
+            				a1.setTitle("GAME OVER");
+            				a1.setContentText("CPU WINS!");
+            				a1.setHeaderText(null);;
+            				a1.showAndWait();
+                		}
+            		}
+            		if(rand == 3 && (btn[0][2].getText().equals("-"))) 
             		{
-            			Alert a1 = new Alert(Alert.AlertType.INFORMATION);
-            			a1.setTitle("GAME OVER");
-            			a1.setContentText("CPU WINS!");
-            			a1.setHeaderText(null);;
-            			a1.showAndWait();
-                	}
-            	}
-            	if(rand == 4 && btn[1][0].getText().equals("-")) 
-            	{
-            		btn[1][0].setText("O");
-            		btn[1][0].setFont(Font.font("Verdana", 40));
-            		array[1][0] = 2;
-            		count++;
-            		turn++;
-            		if(winnerCheck() == true && btn[1][0].getText().equals("O")) 
+            			btn[0][2].setText("O");
+            			btn[0][2].setFont(Font.font("Verdana", 40));
+            			array[0][2] = 2;
+            			count++;
+            			turn++;
+            			if(winnerCheck() == true && btn[0][2].getText().equals("O")) 
+            			{
+            				Alert a1 = new Alert(Alert.AlertType.INFORMATION);
+            				a1.setTitle("GAME OVER");
+            				a1.setContentText("CPU WINS!");
+            				a1.setHeaderText(null);;
+            				a1.showAndWait();
+                		}
+            		}
+            		if(rand == 4 && btn[1][0].getText().equals("-")) 
             		{
-            			Alert a1 = new Alert(Alert.AlertType.INFORMATION);
-            			a1.setTitle("GAME OVER");
-            			a1.setContentText("CPU WINS!");
-            			a1.setHeaderText(null);;
-            			a1.showAndWait();
-                	}
-            	}
-            	if(rand == 5 && btn[1][1].getText().equals("-")) 
-            	{
-            		btn[1][1].setText("O");
-            		btn[1][1].setFont(Font.font("Verdana", 40));
-            		array[1][1] = 2;
-            		count++;
-            		turn++;
-            		if(winnerCheck() == true && btn[1][1].getText().equals("O")) 
+            			btn[1][0].setText("O");
+            			btn[1][0].setFont(Font.font("Verdana", 40));
+            			array[1][0] = 2;
+            			count++;
+            			turn++;
+            			if(winnerCheck() == true && btn[1][0].getText().equals("O")) 
+            			{
+            				Alert a1 = new Alert(Alert.AlertType.INFORMATION);
+            				a1.setTitle("GAME OVER");
+            				a1.setContentText("CPU WINS!");
+            				a1.setHeaderText(null);;
+            				a1.showAndWait();
+                		}
+            		}
+            		if(rand == 5 && btn[1][1].getText().equals("-")) 
             		{
-            			Alert a1 = new Alert(Alert.AlertType.INFORMATION);
-            			a1.setTitle("GAME OVER");
-            			a1.setContentText("CPU WINS!");
-            			a1.setHeaderText(null);;
-            			a1.showAndWait();
-                	}
-            	}
-            	if(rand == 6 && btn[1][2].getText().equals("-")) 
-            	{
-            		btn[1][2].setText("O");
-            		btn[1][2].setFont(Font.font("Verdana", 40));
-            		array[1][2] = 2;
-            		count++;
-            		turn++;
-            		if(winnerCheck() == true && btn[1][2].getText().equals("O")) 
+            			btn[1][1].setText("O");
+            			btn[1][1].setFont(Font.font("Verdana", 40));
+            			array[1][1] = 2;
+            			count++;
+            			turn++;
+            			if(winnerCheck() == true && btn[1][1].getText().equals("O")) 
+            			{
+            				Alert a1 = new Alert(Alert.AlertType.INFORMATION);
+            				a1.setTitle("GAME OVER");
+            				a1.setContentText("CPU WINS!");
+            				a1.setHeaderText(null);;
+            				a1.showAndWait();
+                		}
+            		}	
+            		if(rand == 6 && btn[1][2].getText().equals("-")) 
             		{
-            			Alert a1 = new Alert(Alert.AlertType.INFORMATION);
-            			a1.setTitle("GAME OVER");
-            			a1.setContentText("CPU WINS!");
-            			a1.setHeaderText(null);;
-            			a1.showAndWait();
-                	}
-            	}
-            	if(rand == 7 && btn[2][0].getText().equals("-")) 
-            	{
-            		btn[2][0].setText("O");
-            		btn[2][0].setFont(Font.font("Verdana", 40));
-            		array[2][0] = 2;
-            		count++;
-            		turn++;
-            		if(winnerCheck() == true && btn[2][0].getText().equals("O")) 
+            			btn[1][2].setText("O");
+            			btn[1][2].setFont(Font.font("Verdana", 40));
+            			array[1][2] = 2;
+            			count++;
+            			turn++;
+            			if(winnerCheck() == true && btn[1][2].getText().equals("O")) 
+            			{
+            				Alert a1 = new Alert(Alert.AlertType.INFORMATION);
+            				a1.setTitle("GAME OVER");
+            				a1.setContentText("CPU WINS!");
+            				a1.setHeaderText(null);;
+            				a1.showAndWait();
+                		}
+            		}
+            		if(rand == 7 && btn[2][0].getText().equals("-")) 
             		{
-            			Alert a1 = new Alert(Alert.AlertType.INFORMATION);
-            			a1.setTitle("GAME OVER");
-            			a1.setContentText("CPU WINS!");
-            			a1.setHeaderText(null);;
-            			a1.showAndWait();
-                	}
-            	}
-            	if(rand == 8 && btn[2][1].getText().equals("-")) 
-            	{
-            		btn[2][1].setText("O");
-            		btn[2][1].setFont(Font.font("Verdana", 40));
-            		array[2][1] = 2;
-            		count++;
-            		turn++;
-            		if(winnerCheck() == true && btn[2][1].getText().equals("O")) 
+            			btn[2][0].setText("O");
+            			btn[2][0].setFont(Font.font("Verdana", 40));
+            			array[2][0] = 2;
+            			count++;
+            			turn++;
+            			if(winnerCheck() == true && btn[2][0].getText().equals("O")) 
+            			{
+            				Alert a1 = new Alert(Alert.AlertType.INFORMATION);
+            				a1.setTitle("GAME OVER");
+            				a1.setContentText("CPU WINS!");
+            				a1.setHeaderText(null);;
+            				a1.showAndWait();
+                		}
+            		}
+            		if(rand == 8 && btn[2][1].getText().equals("-")) 
             		{
-            			Alert a1 = new Alert(Alert.AlertType.INFORMATION);
-            			a1.setTitle("GAME OVER");
-            			a1.setContentText("CPU WINS!");
-            			a1.setHeaderText(null);;
-            			a1.showAndWait();
-                	}
-            	}
-            	if(rand == 9 && btn[2][2].getText().equals("-")) 
-            	{
-            		btn[2][2].setText("O");
-            		btn[2][2].setFont(Font.font("Verdana", 40));
-            		array[2][2] = 2;
-            		count++;
-            		turn++;
-            		if(winnerCheck() == true && btn[2][2].getText().equals("O")) 
+            			btn[2][1].setText("O");
+            			btn[2][1].setFont(Font.font("Verdana", 40));
+            			array[2][1] = 2;
+            			count++;
+            			turn++;
+            			if(winnerCheck() == true && btn[2][1].getText().equals("O")) 
+            			{
+            				Alert a1 = new Alert(Alert.AlertType.INFORMATION);
+            				a1.setTitle("GAME OVER");
+            				a1.setContentText("CPU WINS!");
+            				a1.setHeaderText(null);;
+            				a1.showAndWait();
+                		}
+            		}
+            		if(rand == 9 && btn[2][2].getText().equals("-")) 
             		{
-            			Alert a1 = new Alert(Alert.AlertType.INFORMATION);
-            			a1.setTitle("GAME OVER");
-            			a1.setContentText("CPU WINS!");
-            			a1.setHeaderText(null);;
-            			a1.showAndWait();
-                	}
-            	}
+            			btn[2][2].setText("O");
+            			btn[2][2].setFont(Font.font("Verdana", 40));
+            			array[2][2] = 2;
+            			count++;
+            			turn++;
+            			if(winnerCheck() == true && btn[2][2].getText().equals("O")) 
+            			{
+            				Alert a1 = new Alert(Alert.AlertType.INFORMATION);
+            				a1.setTitle("GAME OVER");
+            				a1.setContentText("CPU WINS!");
+            				a1.setHeaderText(null);;
+            				a1.showAndWait();
+                		}
+            		}
         	}	
        	}
        	//function for competitive cpu that is trying to win
@@ -980,7 +978,7 @@ public class TicTacToe extends Application
                 			a1.setContentText("CPU WINS!");
                 			a1.setHeaderText(null);;
                 			a1.showAndWait();
-                    	}
+                    		}
                 	}
            		}
        		}
