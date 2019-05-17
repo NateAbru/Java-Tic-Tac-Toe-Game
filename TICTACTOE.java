@@ -119,7 +119,7 @@ public class TICTACTOE extends Application
       grid.add(btn[2][2], 2, 2);
       root.setLeft(grid);
       
-      Scene myScene = new Scene(root, 700, 600);
+      Scene myScene = new Scene(root, 650, 600);
       primaryStage.setTitle("TIC TAC TOE");
       primaryStage.setScene(myScene);
       primaryStage.show();
