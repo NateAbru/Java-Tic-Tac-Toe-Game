@@ -87,7 +87,7 @@ public class TICTACTOE extends Application
     	                !btn[0][2].getText().equals("-") && !btn[1][0].getText().equals("-") &&
     	                !btn[1][1].getText().equals("-") && !btn[1][2].getText().equals("-") &&
     	                !btn[2][0].getText().equals("-") && !btn[2][1].getText().equals("-") &&
-    	                !btn[2][2].getText().equals("-")) 
+    	                !btn[2][2].getText().equals("-") && (cpuWinCheck != true)) 
     	             {
     	            	gameOver = true;
     	                Alert a1 = new Alert(Alert.AlertType.INFORMATION);
